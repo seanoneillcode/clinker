@@ -2,12 +2,12 @@
 
 module.exports = {
   //db: 'mongodb://localhost/mean-dev1',
-  db: 'mongodb://quicklinktester:=5!hacKer9@ds033390.mongolab.com:33390/fastroad',
+  db: 'mongodb://quicklinktester:notatestreally@ds033390.mongolab.com:33390/fastroad',
   mongoose: {
     debug: true
   },
   app: {
-    name: 'MEAN - FullStack JS - Development'
+    name: 'Badger - links'
   },
   // facebook: {
   //   clientID: 'APP_ID',

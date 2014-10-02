@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-prod',
+  db: 'mongodb://quicklinktester:notatestreally@ds033390.mongolab.com:33390/fastroad',
   /**
    * Database options that will be passed directly to mongoose.connect
    * Below are some examples.
@@ -27,7 +27,7 @@ module.exports = {
     */
   },
   app: {
-    name: 'MEAN - A Modern Stack - Production'
+    name: 'Badger - links - prod'
   },
   // facebook: {
   //   clientID: 'APP_ID',
@@ -45,21 +45,21 @@ module.exports = {
   //   callbackURL: 'http://localhost:3000/auth/github/callback'
   // },
   google: {
-    clientID: 'APP_ID',
-    clientSecret: 'APP_SECRET',
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    clientID: '724430680134-6ht44b69a61v0bpmrvcnkbdsuftq6jdm.apps.googleusercontent.com',
+    clientSecret: 'ora767htvz8f_KbYPF3e8jsI',
+    callbackURL: 'http://127.0.0.1:3000/oauth2callback'
   },
   // linkedin: {
   //   clientID: 'API_KEY',
   //   clientSecret: 'SECRET_KEY',
   //   callbackURL: 'http://localhost:3000/auth/linkedin/callback'
   // },
-  emailFrom: 'SENDER EMAIL ADDRESS', // sender address like ABC <abc@example.com>
+  emailFrom: 'badger', // sender address like ABC <abc@example.com>
   mailer: {
-    service: 'SERVICE_PROVIDER',
+    service: 'gmail', // Gmail, SMTP
     auth: {
-      user: 'EMAIL_ID',
-      pass: 'PASSWORD'
+        user: 'quicklinktester@gmail.com',
+        pass: '=5!hacKer9'
     }
   }
 };
