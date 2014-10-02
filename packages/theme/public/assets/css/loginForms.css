@@ -3,7 +3,6 @@ html {
 }
 
 body.login, body.register,  body.forgot-password {
-background: url("/theme/assets/img/bg.png");
     height: 100%;
     position: relative;
 }
@@ -428,10 +427,9 @@ background: url("/theme/assets/img/bg.png");
 }
 
 .woman_ninja_left {
-    position: absolute;
-    top: 75px;
-    left: -410px;
-    pointer-events: none;
+position: absolute;
+left: 120px;
+pointer-events: none;
 }
 
 .registration_form {

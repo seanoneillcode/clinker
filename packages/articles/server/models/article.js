@@ -20,14 +20,20 @@ var ArticleSchema = new Schema({
     required: true,
     trim: true
   },
-  content: {
-    type: String,
-    required: true,
-    trim: true
-  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
+  },
+  folder: { 
+    type: String,
+    trim: true
+  },
+  image: {
+    type: String
+  },
+  color: {
+    type: String,
+    default: '#eeeeee'
   }
 });
 
@@ -36,11 +42,7 @@ var ArticleSchema = new Schema({
  */
 ArticleSchema.path('title').validate(function(title) {
   return !!title;
-}, 'Title cannot be blank');
-
-ArticleSchema.path('content').validate(function(content) {
-  return !!content;
-}, 'Content cannot be blank');
+}, 'Link cannot be blank');
 
 /**
  * Statics

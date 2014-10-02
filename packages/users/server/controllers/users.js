@@ -15,6 +15,7 @@ var mongoose = require('mongoose'),
  * Auth callback
  */
 exports.authCallback = function(req, res) {
+  console.log('WRONG ***********************');
   res.redirect('/');
 };
 
@@ -22,6 +23,7 @@ exports.authCallback = function(req, res) {
  * Show login form
  */
 exports.signin = function(req, res) {
+  console.log("got to signin");
   if (req.isAuthenticated()) {
     return res.redirect('/');
   }
@@ -113,6 +115,22 @@ exports.me = function(req, res) {
   res.json(req.user || null);
 };
 
+
+exports.email = function(req, res) {
+  var address = req.params.emailAddress;
+  User
+    .findOne({
+      email: address
+    })
+    .exec(function(err, user) {
+      if (!err && user) {
+        console.log('FOUND USER ' + user.email);
+        console.log(user);
+        res.json(user);
+      }
+    });
+};
+
 /**
  * Find user by id
  */
@@ -181,6 +199,12 @@ function sendMail(mailOptions) {
   });
 }
 
+exports.authCallbackAddLink = function (req, res) {
+  console.log('Authenticated, returning user ***********************');
+  //res.json(req.user || null);
+  res.redirect('/#!/articles'); 
+};
+
 /**
  * Callback for forgot password link
  */
@@ -218,7 +242,9 @@ exports.forgotpassword = function(req, res, next) {
           from: config.emailFrom
         };
         mailOptions = templates.forgot_password_email(user, req, token, mailOptions);
+        console.log('sending mail');
         sendMail(mailOptions);
+        console.log('mail sent');
         done(null, true);
       }
     ],

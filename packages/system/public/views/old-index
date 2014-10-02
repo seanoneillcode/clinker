@@ -1,0 +1,72 @@
+<section class="homepage" data-ng-controller="IndexController">
+  <div mean-token="'home-default'">
+
+  	<div class="letter-area">
+  		<div class="letter-area-f">
+       <div class="letter-f" ui-scrollfix="+0">
+        F
+       </div>
+      <div class="letter-sub">
+        Find
+      </div>
+			<div class="letter-sub-paragraph">
+				Your favorite links from the web. Blogs, music, cat pictures and games. All the links you discover.
+			</div>
+  		</div>
+  	</div>
+  	<div class="letter-area">
+  		<div class="letter-area-a">
+  			
+        <div class="letter-a" ui-scrollfix="800">
+          A
+          </div>
+  			<div class="letter-sub">
+  				Add
+  			</div>
+        <div class="letter-sub-paragraph">
+          Without effort, a single click in chrome. Keeps you in the content with switching.
+        </div>
+  		</div>
+  	</div>
+  	<div class="letter-area">
+  		<div class="letter-area-s">
+        <div class="letter-s" ui-scrollfix="1600">
+        S
+        </div>
+        <div class="letter-sub">
+        Share
+        </div>
+  			<div class="letter-sub-paragraph">
+				Automatically, in bulk or individually to friends and family. On social media or good old email.
+			</div>
+			
+  			
+  		</div>
+  	</div>
+  	<div class="letter-area">
+  		<div class="letter-area-t">
+  			<div class="letter-sub">
+				Tweek
+			</div>
+  			<div class="letter-sub-paragraph">
+				Configure a personal greeting for each contact, routing rules. Archive the best for easier retrieval.
+			</div>
+  			<div class="letter-t" ui-scrollfix="2400">
+  			T
+  			</div>
+  		</div>
+  	</div>
+	<div class="letter-link">
+		<div class="letter-link-inner" ui-scrollfix="2800">
+			LINKING
+		</div>
+	</div>
+	<div class="letter-clinker">
+		<a href="http://127.0.0.1:3000/#!/auth/login">
+		<div class="letter-clinker-inner" >
+			<span>WITH</span><span class="clinker-inner-bottom" ui-scrollfix="2860"> BADGER</span>
+		</div>
+		</a>
+	</div>
+  </div>
+</section>

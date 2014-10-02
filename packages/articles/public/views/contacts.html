@@ -1,0 +1,81 @@
+
+<section class="contacts-container" data-ng-controller="PersonsController" data-ng-init="getPersons()">
+  <div class="contacts-person-list">
+    <div class="person-list-container">
+      <div data-ng-repeat="person in persons">
+        <div class="person-item-parent" ng-click="getDetail(person)">
+          <div class="person-item" ng-class="{'selected':person == currentPerson}">
+            <div class="person-item-highlight" ng-class="{'selected':person == currentPerson}"></div>
+            <div class="person-item-text">{{person.name != 'no name' ? person.name : person.address}}</div>
+            <div class="person-item-btn" data-ng-click="remove(person);">
+              <i class="glyphicon glyphicon-trash"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="person-list-add">
+        <form name="personForm" role="form" data-ng-submit="create()" novalidate>
+          <input class="person-list-form" name="address" type="text" data-ng-model="address" id="address" ng-blur="blurCreate()" placeholder="Add address..." required>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="person-detail" ng-show="currentPerson">
+    <form name="personForm" role="form" data-ng-submit="update()" novalidate>
+      <div class="person-form-label">
+        <div class="person-form-label-text">
+          Address
+        </div>
+      </div>
+      <div class="person-form-container">
+        <input name="address" type="text" class="person-list-form" data-ng-model="currentPerson.address" id="address" placeholder="{{currentPerson.address}}" required>
+      </div>
+    </form>
+    <form name="personForm" role="form" data-ng-submit="update()" novalidate>
+      <div class="person-form-label">
+        <div class="person-form-label-text">
+          Name
+        </div>
+      </div>
+      <div class="person-form-container">
+        <input name="name" class="person-list-form" type="text" data-ng-model="currentPerson.name" id="name" placeholder="{{currentPerson.name}}" required>
+      </div>
+    </form>
+    <div>
+      <div class="person-form-label">
+        <div class="person-form-label-text">
+          Is Selected
+        </div>
+      </div>
+      <span class="person-item-parent" ng-click="toggleSelected(currentPerson)">
+        <div class="boolean-item" ng-class="{'selected':currentPerson.selected}">
+          <div class="person-item-text">
+            {{currentPerson.selected}}
+          </div>
+        </div>
+      </span>
+    </div>
+    <div>
+      <div class="person-form-label">
+        <div class="person-form-label-text">
+          Automatically email new links
+        </div>
+      </div>
+      <span class="person-item-parent" ng-click="toggleAutomail(currentPerson)">
+        <div class="boolean-item" ng-class="{'selected':currentPerson.automail}">
+          <div class="person-item-text">
+            {{currentPerson.automail}}
+          </div>
+        </div>
+      </span>
+    </div>
+    <form name="personForm" class="personMargin" role="form" data-ng-submit="update()" novalidate>
+      <div class="person-form-label">
+        <div class="person-form-label-text">
+          Email Message
+        </div>
+      </div>
+      <textarea name="message" class="person-list-textarea" type="text" data-ng-model="currentPerson.message" id="message" placeholder="{{currentPerson.message}}" required>
+    </form>
+  </div>
+</section>

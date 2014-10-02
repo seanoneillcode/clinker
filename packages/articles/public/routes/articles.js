@@ -8,6 +8,7 @@ angular.module('mean.articles').config(['$stateProvider',
       // Initialize a new promise
       var deferred = $q.defer();
 
+
       // Make an AJAX call to check if the user is logged in
       $http.get('/loggedin').success(function(user) {
         // Authenticated
@@ -25,33 +26,30 @@ angular.module('mean.articles').config(['$stateProvider',
 
     // states for my app
     $stateProvider
-      .state('all articles', {
+      .state('articles', {
         url: '/articles',
         templateUrl: 'articles/views/list.html',
         resolve: {
           loggedin: checkLoggedin
         }
       })
-      .state('create article', {
-        url: '/articles/create',
-        templateUrl: 'articles/views/create.html',
+      // .state('article by id', {
+      //   url: '/articles/:articleId',
+      //   templateUrl: 'articles/views/view.html',
+      //   resolve: {
+      //     loggedin: checkLoggedin
+      //   }
+      // })
+      .state('persons', {
+        url: '/persons',
+        templateUrl: 'articles/views/contacts.html',
         resolve: {
           loggedin: checkLoggedin
         }
       })
-      .state('edit article', {
-        url: '/articles/:articleId/edit',
-        templateUrl: 'articles/views/edit.html',
-        resolve: {
-          loggedin: checkLoggedin
-        }
-      })
-      .state('article by id', {
-        url: '/articles/:articleId',
-        templateUrl: 'articles/views/view.html',
-        resolve: {
-          loggedin: checkLoggedin
-        }
+      .state('how', {
+        url: '/how',
+        templateUrl: 'articles/views/how.html'
       });
   }
 ]);

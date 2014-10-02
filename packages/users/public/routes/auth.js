@@ -13,7 +13,7 @@ angular.module('mean.users').config(['$stateProvider',
         // Authenticated
         if (user !== '0') {
           $timeout(deferred.reject);
-          $location.url('/login');
+          $location.url('/articles');
         }
 
         // Not Authenticated

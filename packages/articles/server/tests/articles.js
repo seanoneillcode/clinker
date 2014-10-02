@@ -30,7 +30,6 @@ describe('<Unit Test>', function() {
       user.save(function() {
         article = new Article({
           title: 'Article Title',
-          content: 'Article Content',
           user: user
         });
 
@@ -43,7 +42,6 @@ describe('<Unit Test>', function() {
         return article.save(function(err) {
           should.not.exist(err);
           article.title.should.equal('Article Title');
-          article.content.should.equal('Article Content');
           article.user.should.not.have.length(0);
           article.created.should.not.have.length(0);
           done();
@@ -52,15 +50,6 @@ describe('<Unit Test>', function() {
 
       it('should be able to show an error when try to save without title', function(done) {
         article.title = '';
-
-        return article.save(function(err) {
-          should.exist(err);
-          done();
-        });
-      });
-
-      it('should be able to show an error when try to save without content', function(done) {
-        article.content = '';
 
         return article.save(function(err) {
           should.exist(err);

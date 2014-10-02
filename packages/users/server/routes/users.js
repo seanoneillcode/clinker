@@ -10,7 +10,9 @@ module.exports = function(MeanUser, app, auth, database, passport) {
     .get(users.signout);
   app.route('/users/me')
     .get(users.me);
-
+  app.route('/users/email/:emailAddress')
+    .get(users.email);
+    // .get(users.email);
   // Setting up the users api
   app.route('/register')
     .post(users.create);
@@ -91,10 +93,24 @@ module.exports = function(MeanUser, app, auth, database, passport) {
       ]
     }), users.signin);
 
-  app.route('/auth/google/callback')
+  app.route('/oauth2callback')
     .get(passport.authenticate('google', {
-      failureRedirect: '#!/login'
-    }), users.authCallback);
+      failureRedirect: '#!/login',
+      scope: [
+        'https://www.googleapis.com/auth/userinfo.profile',
+        'https://www.googleapis.com/auth/userinfo.email'
+      ]
+    }), users.authCallbackAddLink);
+
+    // app.route('/oauth2callback')
+    // .get(passport.authenticate('google', {
+    //   failureRedirect: '#!/login',
+    //   scope: [
+    //     'https://www.googleapis.com/auth/userinfo.profile',
+    //     'https://www.googleapis.com/auth/userinfo.email'
+    //   ]
+    // }), users.authCallback);
+
 
   // Setting the linkedin oauth routes
   app.route('/auth/linkedin')

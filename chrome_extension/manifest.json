@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "Clinker Chrome Extension",
+  "description": "Uses the browser to capture links and send them to Clinker",
+  "version": "1.0",
+
+  "permissions": [
+    "http://127.0.0.1/*",
+    "https://accounts.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [ "http://*/*", "https://*/*"],
+      "js": ["third-party/jquery.js", "popup.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "icon48.png",
+    "default_popup": "popup.html"
+  },
+  "icons": { "16": "icon16.png",
+           "48": "icon48.png",
+          "128": "icon128.png" }
+}

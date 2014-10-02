@@ -1,21 +1,86 @@
-<section data-ng-controller="ArticlesController" data-ng-init="find()">
-  <ul class="articles unstyled">
-    <li data-ng-repeat="article in articles">
-      <span>{{article.created | date:'medium'}}</span> /
-      <span>{{article.user.name}}</span>
-      <h2>
-        <a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a>
-        <span data-ng-if="hasAuthorization(article)">
-          <a class="btn" href="/#!/articles/{{article._id}}/edit">
-            <i class="glyphicon glyphicon-edit"></i>
+
+<section data-ng-controller="ArticlesController" data-ng-init="loadArticles()">
+
+  <div class="folder-list" >
+    <div class="folders">
+        <div folder-selection folder="NEW"></div>
+        <div folder-selection folder="ARCHIVE"></div>
+        <div folder-selection folder="INBOX"></div>
+        <div folder-selection folder="BIN"></div>
+    </div>
+  </div>
+
+  <section class="person-list" data-ng-controller="PersonsController" data-ng-init="getPersons()">
+    <div class="person-list-container">
+      <div data-ng-repeat="person in persons">
+        <div class="person-item-parent" ng-click="toggleSelected(person)">
+          <div class="person-item" ng-class="{'selected':person.selected}">
+            <div class="person-item-highlight" ng-class="{'selected':person.selected}"></div>
+            <div class="person-item-text">{{person.name != 'no name' ? person.name : person.address}}</div>
+            <div class="person-item-btn" data-ng-click="remove(person);">
+              <i class="glyphicon glyphicon-trash"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="person-list-add">
+        <form name="personForm" role="form" data-ng-submit="create()" novalidate>
+          <input class="person-list-form" name="address" type="text" data-ng-model="address" id="address" ng-blur="blurCreate()" placeholder="Add address..." required>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="articles linklist">
+    <div class="add-link">
+      <div class="add-btn-highlight"></div>
+      <form name="articleForm" class="form-horizontal add-link-form" role="form" data-ng-submit="addLink()" novalidate>
+        <input name="title" type="text" class="person-list-form" data-ng-model="title" id="title" placeholder="Add Link..." required>
+      </form>
+      <div class="add-btn-highlight"></div>
+      <button class="add-link-btn" data-ng-click="addLink()" >Add Link</button>
+    </div>
+    <ul class="articles unstyled" >
+      <div data-ng-repeat="article in articles | filter:{folder:currentFilter}">
+        <div class="link" style="background:{{article.color}}">
+          <a class="thumbnail" href="{{article.title}}">
+            <img ng-if="article.image !== undefined" ng-src="{{article.image}}" >
+            <img ng-if="article.image === undefined" ng-src="/articles/assets/img/no-screenshot.png">
           </a>
-          <a class="btn" data-ng-click="remove(article);">
-            <i class="glyphicon glyphicon-trash"></i>
-          </a>
-        </span>
-      </h2>
-      <div>{{article.content}}</div>
-    </li>
-  </ul>
-  <h1 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/#!/articles/create">Create One</a>?</h1>
+          <div class="entry">
+            <div class="entry-paragraph">
+              <a class="article-item" data-ng-href="{{article.title}}">{{article.title}}</a>
+            </div>
+            <div class="entry-paragraph">
+              <span >
+                <a class="btn" data-ng-click="remove(article);" title="delete">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </a>
+                <a class="btn" data-ng-click="archive(article);" title="move to archive">
+                  <i class="glyphicon glyphicon-folder-open"></i>
+                </a>
+                <a class="btn" data-ng-click="badger(article)" title="badger other user">
+                  <span class="twitter-glyph">B</span>
+                </a>
+                <a class="btn" data-ng-click="shareLink(article)" title="share as email">
+                  <i class="glyphicon glyphicon-envelope"></i>
+                </a>
+                <!-- <a class="btn" data-ng-click="shareLink(article)" title="share on facebook">
+                  <span class="facebook-glyph">f</span>
+                </a>
+                <a class="btn" data-ng-click="shareLink(article)" title="share on twitter">
+                  <span class="twitter-glyph">t</span>
+                </a> -->
+                <span class="base-sent" ng-class="{'sent':article.showSent}">{{article.sent}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+    <h1 data-ng-hide="!articles || articles.length">No links yet.</h1>
+  </div>
+
+  
+
 </section>
