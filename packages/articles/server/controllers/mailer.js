@@ -35,7 +35,7 @@ var clinkerSignature = function(message, link) {
          '</tr>' +
          '<tr>' +
            '<td style="padding: 20px 20px 60px 20px; color: #112222; font-family: Arial, sans-serif; font-size: 24px;">' +
-            '<a>' +
+            '<a href="@LINK">' +
              '@LINK' +
             '</a>' +
            '</td>' +
@@ -61,7 +61,7 @@ var clinkerSignature = function(message, link) {
          '</tr>' +
         '</table>' +
       '</body>' +
-    '</html> ').replace('@MESSAGE', message).replace('@LINK', link);
+    '</html> ').replace('@MESSAGE', message).split('@LINK').join(link);
 };
 
 var sendArticleToPerson = function(article, person, from) {
