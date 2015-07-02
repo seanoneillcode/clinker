@@ -195,3 +195,6 @@ heroku config:set NODE_ENV=production
 
 ## License
 [The MIT License](http://opensource.org/licenses/MIT)
+
+## Live deployment
+http://fierce-shore-5107.herokuapp.com/#!/articles
